@@ -4,6 +4,7 @@
 package bil481;
 
 import java.util.ArrayList;
+import static spark.Spark.get;
 
 public class App {
     public String getGreeting() {

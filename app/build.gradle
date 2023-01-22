@@ -22,6 +22,9 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.1-jre'
+
+    implementation "com.sparkjava:spark-core:2.9.4" // add to build.gradle (for Java users)
+    implementation "com.sparkjava:spark-kotlin:1.0.0-alpha" // add to build.gradle (for Kotlin users)
 }
 
 application {
