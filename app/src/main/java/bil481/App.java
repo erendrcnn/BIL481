@@ -4,7 +4,7 @@
 package bil481;
 
 import java.util.ArrayList;
-import static spark.Spark.get;
+// import static spark.Spark.get;
 
 public class App {
     public String getGreeting() {
@@ -13,6 +13,17 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
+
+        /*
+        get("/compute",
+            (req, res) -> {
+                Map<String, String> map = new HashMap<String, String>();
+                map.put("result", "not computed yet.");
+                return new ModelAndView(map, "compute.mustache");
+            },
+            new MustacheTemplateEngine()
+        );
+        */
     }
 
     public static boolean search(ArrayList<Integer> list, int key) {
