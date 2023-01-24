@@ -3,8 +3,17 @@
  */
 package bil481;
 
+import static spark.Spark.*;
+
+import java.util.HashMap;
 import java.util.ArrayList;
-// import static spark.Spark.get;
+import java.util.Map;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
+
+import spark.ModelAndView;
+import spark.template.mustache.MustacheTemplateEngine;
 
 public class App {
     public String getGreeting() {
@@ -13,8 +22,21 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
+        
+        /* 
+        Route route = new Route() {
+            @Override
+            public Object handle(Request request, Response response) throws Exception {
+                return "Hello World!";
+            }
+        };*/
+        
+        Logger logger = (Logger) LogManager.getLogger(App.class);
+        logger.error("HELLO WORLD!");
 
-        /*
+
+        get("/", (req, res) -> "Hello World!");
+
         get("/compute",
             (req, res) -> {
                 Map<String, String> map = new HashMap<String, String>();
@@ -23,7 +45,44 @@ public class App {
             },
             new MustacheTemplateEngine()
         );
-        */
+
+        post("/compute",
+            (req, res) -> {
+                String input1 = req.queryParams("input1");
+                String input2 = req.queryParams("input2");
+
+                java.util.Scanner sc1 = new java.util.Scanner(input1);
+                sc1.useDelimiter("[;\r\n]+");
+                java.util.ArrayList<Integer> inputList = new java.util.ArrayList<>();
+                while (sc1.hasNext())
+                {
+                    int value = Integer.parseInt(sc1.next().replaceAll("\\s",""));
+                    inputList.add(value);
+                }
+                sc1.close();
+                System.out.println(inputList);
+
+                java.util.Scanner sc2 = new java.util.Scanner(input2);
+                sc2.useDelimiter("[;\r\n]+");
+                java.util.ArrayList<Integer> inputList2 = new java.util.ArrayList<>();
+                while (sc2.hasNext())
+                {
+                    int value = Integer.parseInt(sc2.next().replaceAll("\\s",""));
+                    inputList2.add(value);
+                }
+                sc2.close();
+                System.out.println(inputList2);
+
+                int input2asInt = Integer.parseInt(input2);
+
+                boolean result = App.search(inputList, input2asInt);
+
+                Map<String, Boolean> map = new HashMap<String, Boolean>();
+                map.put("result", result);
+                return new ModelAndView(map, "compute.mustache");
+
+            }, new MustacheTemplateEngine()
+        );
     }
 
     public static boolean search(ArrayList<Integer> list, int key) {
