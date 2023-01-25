@@ -1,0 +1,25 @@
+{
+  "name": "bil481",
+  "version": "1.0.0",
+  "description": "This is a example project of bil481",
+  "main": "index.js",
+  "scripts": {
+    "test": "deneme"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erendrcnn/BIL481.git"
+  },
+  "keywords": [
+    "proje"
+  ],
+  "author": "Eren Durucan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erendrcnn/BIL481/issues"
+  },
+  "homepage": "https://github.com/erendrcnn/BIL481#readme",
+  "dependencies": {
+    "firebase": "^9.16.0"
+  }
+}
