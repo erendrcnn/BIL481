@@ -60,7 +60,9 @@ public class App {
                     inputList.add(value);
                 }
                 sc1.close();
-                System.out.println(inputList);
+
+                System.out.println("\n============[  RUN  ]=============");
+                System.out.println("InputList : " + inputList);
 
                 java.util.Scanner sc2 = new java.util.Scanner(input2);
                 sc2.useDelimiter("[;\r\n]+");
@@ -71,11 +73,15 @@ public class App {
                     inputList2.add(value);
                 }
                 sc2.close();
-                System.out.println(inputList2);
 
-                int input2asInt = Integer.parseInt(input2);
+                System.out.println("InputList2 : "  + inputList2);
+
+                int input2asInt = inputList2.get(0);
 
                 boolean result = App.search(inputList, input2asInt);
+
+                System.out.println("Result : " + result);
+                System.out.println("============[ FINISH ]============");
 
                 Map<String, Boolean> map = new HashMap<String, Boolean>();
                 map.put("result", result);
